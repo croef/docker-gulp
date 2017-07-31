@@ -4,8 +4,6 @@ MAINTAINER croef <changrong185@gmail.com>
 
 WORKDIR /home/
 
-RUN echo 'deb http://mirrors.aliyun.com/debian/ jessie main non-free contrib \n deb http://mirrors.aliyun.com/debian/ jessie-proposed-updates main non-free contrib \n deb-src http://mirrors.aliyun.com/debian/ jessie main non-free contrib \n deb-src http://mirrors.aliyun.com/debian/ jessie-proposed-updates main non-free contrib' > /etc/apt/sources.list
-
 # skip installing gem documentation
 RUN mkdir -p /usr/local/etc \
 	&& { \
@@ -80,15 +78,6 @@ ENV PATH $BUNDLE_BIN:$PATH
 RUN mkdir -p "$GEM_HOME" "$BUNDLE_BIN" \
 	&& chmod 777 "$GEM_HOME" "$BUNDLE_BIN"
 
-
-RUN npm config set registry https://registry.npm.taobao.org/
-ENV PHANTOMJS_CDNURL https://npm.taobao.org/mirrors/phantomjs/
-ENV SASS_BINARY_SITE https://npm.taobao.org/mirrors/node-sass/
 RUN npm install -g gulp grunt-cli spm webpack grunt
 
 RUN gem install sass compass
-
-RUN groupadd -r webedit -g 1001 \
-    && useradd -r -g webedit -u 1002 --shell /bin/bash --create-home webedit
-
-USER webedit
