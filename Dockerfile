@@ -1,6 +1,6 @@
 
 FROM node:6.10.2
-MAINTAINER changrong <hzchangrong@corp.netease.com>
+MAINTAINER croef <changrong185@gmail.com>
 
 WORKDIR /home/
 
