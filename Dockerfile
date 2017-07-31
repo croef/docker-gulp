@@ -78,9 +78,7 @@ ENV PATH $BUNDLE_BIN:$PATH
 RUN mkdir -p "$GEM_HOME" "$BUNDLE_BIN" \
 	&& chmod 777 "$GEM_HOME" "$BUNDLE_BIN"
 
-RUN npm config set registry https://registry.npm.taobao.org/
-ENV PHANTOMJS_CDNURL https://npm.taobao.org/mirrors/phantomjs/
-ENV SASS_BINARY_SITE https://npm.taobao.org/mirrors/node-sass/
+RUN apt-get install nodejs-legacy
 
 RUN npm install -g gulp grunt-cli spm webpack grunt
 
